@@ -2,12 +2,35 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Root from './Components/Root/Root.jsx'
+import Root from './Pages/Root/Root.jsx'
+import Home from './Pages/Home/Home.jsx'
+import Favorites from './Pages/Favorites/Favorites.jsx'
+import Login from './Pages/Login/Login.jsx'
+import SignUp from './Pages/SignUp/SignUp.jsx'
 
 const myCreateRouter = createBrowserRouter([
   {
     path: '/',
-    element: <Root></Root>
+    element: <Root></Root>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+        loader: () => fetch('phones.json')
+      },
+      {
+        path: "/favorites",
+        element: <Favorites></Favorites>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path : "/signup",
+        element: <SignUp></SignUp>
+      }
+    ]
   }
 ])
 
