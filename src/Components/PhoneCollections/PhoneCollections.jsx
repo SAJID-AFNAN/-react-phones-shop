@@ -3,7 +3,7 @@ import PhonesCard from "../PhonesCard/PhonesCard";
 
 const PhoneCollections = () => {
     const phones = useLoaderData();
-    console.log(phones);
+    // console.log(phones);
     return (
         <div>
             <h2 className="text-4xl font-bold text-center mt-32 mb-24">Our Phones Collections</h2>

@@ -7,6 +7,7 @@ import Home from './Pages/Home/Home.jsx'
 import Favorites from './Pages/Favorites/Favorites.jsx'
 import Login from './Pages/Login/Login.jsx'
 import SignUp from './Pages/SignUp/SignUp.jsx'
+import PhonesDetails from './Components/PhonesDetails/PhonesDetails.jsx'
 
 const myCreateRouter = createBrowserRouter([
   {
@@ -29,6 +30,11 @@ const myCreateRouter = createBrowserRouter([
       {
         path : "/signup",
         element: <SignUp></SignUp>
+      },
+      {
+        path: "/phones/:id",
+        element: <PhonesDetails></PhonesDetails>,
+        loader: () => fetch('phones.json')
       }
     ]
   }

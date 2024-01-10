@@ -6,13 +6,26 @@ import {
     Typography,
     Button,
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
 
-const PhonesCard = ({ phone }) => {
-    const { id, image, phone_name, brand_name, price, rating } = phone
+const PhonesDetails = () => {
+    const [phone, setPhone] = useState([])
+
+    // const params = useParams();
+    const { id } = useParams();
+    const AllData = useLoaderData();
+
+    useEffect(() => {
+        const Details = AllData.find(data => data.id === id)
+        // console.log((Details));
+        setPhone(Details)
+    }, [id, AllData])
+
+    const { image, phone_name, brand_name, price, rating } = phone
     return (
         <div>
-            <Card className="">
+            <Card className="w-96">
                 <CardHeader shadow={false} floated={false} className="h-96">
                     <img
                         src={image}
@@ -36,17 +49,17 @@ const PhonesCard = ({ phone }) => {
                     </Typography>
                 </CardBody>
                 <CardFooter className="pt-0">
-                    <Link to={`/phones/${id}`}><Button
+                    <Button
                         ripple={false}
                         fullWidth={true}
                         className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
                     >
-                        See Details
-                    </Button></Link>
+                       Add to Cart
+                    </Button>
                 </CardFooter>
             </Card>
         </div>
     );
 };
 
-export default PhonesCard;
+export default PhonesDetails;
