@@ -1,9 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import PhonesCard from "../PhonesCard/PhonesCard";
 
-const PhoneCollections = () => {
-    const phones = useLoaderData();
-    // console.log(phones);
+const PhoneCollections = ({phones}) => {
+    // const phones = useLoaderData();
     return (
         <div>
             <h2 className="text-4xl font-bold text-center mt-32 mb-24">Our Phones Collections</h2>
