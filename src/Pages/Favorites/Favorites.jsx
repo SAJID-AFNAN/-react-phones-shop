@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SingleFavorites from "../../Components/SingleFavorites/SingleFavorites";
-import { getStoredPhone } from "../../Utility/LocalStorage/LocalStorage";
+import { clearStoredPhone, getStoredPhone } from "../../Utility/LocalStorage/LocalStorage";
 import { useLoaderData } from "react-router-dom";
 
 const Favorites = () => {
@@ -24,11 +24,20 @@ const Favorites = () => {
             console.log(storedPhone);
         }
     }, [AllPhones])
+
+    const handleClearItem = () => {
+        clearStoredPhone();
+    }
     return (
         <div>
-            {
-                phones.map(phone => <SingleFavorites key={phone.id} phone={phone}></SingleFavorites>)
-            }
+            <div className="text-center mb-20">
+                <button onClick={handleClearItem} className="btn bg-green-200 text-3xl">Remove All items</button>
+            </div>
+            <div className="grid grid-cols-3 gap-5 px-20">
+                {
+                    phones.map(phone => <SingleFavorites key={phone.id} phone={phone}></SingleFavorites>)
+                }
+            </div>
         </div>
     );
 };
